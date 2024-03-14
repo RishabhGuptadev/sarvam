@@ -1,0 +1,9 @@
+body { 
+  background: #faf3ea;
+}
+
+.activeClass { 
+  background: #f5eadc;
+  padding: 1px 6px;
+  border-radius: 12px;
+}
