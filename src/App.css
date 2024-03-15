@@ -7,3 +7,7 @@ body {
   padding: 1px 6px;
   border-radius: 12px;
 }
+
+::-webkit-scrollbar {
+  width: 0;
+}
