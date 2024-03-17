@@ -8,6 +8,7 @@ import {
   NavButton,
   ScrollContainer,
   StyledPara,
+  TalkContainer,
   Wrapper,
 } from "../styled";
 import cta1 from "../assets/cta1.svg";
@@ -37,50 +38,6 @@ const Home = () => {
           <Talk />
         </ScrollContainer>
       </HomeContainer>
-      <MobileContainer>
-        <LayoutBox justifyContent="space-between">
-          <Alignment margin="32px 0px 0px 16px">
-            <NavButton onClick={() => navigate("/discover")}>
-              <Icon src={cta1} alt="cta1" />
-            </NavButton>
-          </Alignment>
-          <Alignment margin="32px 16px 0px 0px">
-            <LayoutBox gap="12px">
-              <NavButton>
-                <Icon src={cta1} alt="cta1" />
-              </NavButton>
-              <NavButton>
-                <Icon src={cta1} alt="cta1" />
-              </NavButton>
-            </LayoutBox>
-          </Alignment>
-        </LayoutBox>
-        <Alignment>
-          <LayoutBox justifyContent="flex-end">
-            <Alignment
-              margin="40px 20px 0px 0px"
-              padding="0px 10px"
-              style={{ background: "#f5eadc", borderRadius: "12px" }}
-            >
-              <StyledPara style={{ lineHeight: "0rem" }}>{speech}</StyledPara>
-            </Alignment>
-          </LayoutBox>
-          <LayoutBox justifyContent="flex-start">
-            <Alignment
-              margin="10px 0px 0px 20px"
-              padding="0px 10px"
-              style={{
-                background: "#f5eadc",
-                borderRadius: "12px",
-                maxWidth: "210px",
-              }}
-            >
-              <StyledPara>{CHATS?.[speech]}</StyledPara>
-            </Alignment>
-          </LayoutBox>
-        </Alignment>
-        <Footer setQuestion={setQuestion} />
-      </MobileContainer>
     </Wrapper>
   );
 };

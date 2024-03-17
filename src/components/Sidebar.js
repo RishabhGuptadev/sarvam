@@ -26,12 +26,12 @@ const Sidebar = () => {
     {
       icon: cta2,
       title: "Threads",
-      link: "/threads",
+      link: "/discover",
     },
     {
       icon: cta3,
       title: "Profile",
-      link: "/profile",
+      link: "/discover",
     },
   ];
 
@@ -39,24 +39,32 @@ const Sidebar = () => {
     <SidebarContainer>
       <Alignment
         style={{
-          borderRight: "1px solid rgb(237 225 209)",
           height: "100vh",
           position: "sticky",
           top: "0px",
         }}
-        padding="1rem"
       >
         {NAV_ITEMS?.map((item) => {
           return (
-            <div onClick={() => navigate(item?.link)}>
-              <Alignment margin="14px 0px" style={{ cursor: "pointer" }}>
+            <div
+              onClick={(e) => {
+                navigate(item?.link);
+                setActive(e.target.textContent);
+              }}
+              className={active === item?.title ? "active common" : "common"}
+            >
+              <Alignment style={{ cursor: "pointer" }}>
                 <LayoutBox
                   justifyContent="center"
                   alignItems="center"
                   flexDirection="column"
                 >
                   <SidebarIcon src={item?.icon} alt="cta1" />
-                  <SidebarTitle>{item?.title}</SidebarTitle>
+                  <SidebarTitle
+                    className={active === item?.title ? "active" : null}
+                  >
+                    {item?.title}
+                  </SidebarTitle>
                 </LayoutBox>
               </Alignment>
             </div>

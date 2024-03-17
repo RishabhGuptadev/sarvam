@@ -182,6 +182,5 @@ export const CHATS = {
     "I'm doing great, thanks for asking! As an AI, I don't have the same needs as humans, so I'm always in top form! What about you? How are you feeling today?",
   "how big will Sarvam AI get?":
     "It's going to be huge and disrupt the market.",
-  "who is the cutest girl in the world":
-    "The girl name Anupriya Sinha is the cutest girl in the world. Rishabh ki motki",
+  hey: "Hey there! What's on your mind today?",
 };

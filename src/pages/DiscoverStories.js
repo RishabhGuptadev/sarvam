@@ -1,19 +1,19 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Alignment,
-  Container,
+  CardTitle,
   DiscoverContainer,
-  GridContainer,
-  GridItem,
   LayoutBox,
   NavButton,
   ParentContainer,
+  StyledBox,
+  StyledContainer,
+  StyledImage,
   StyledTitle,
 } from "../styled";
 import { RxCross2 } from "react-icons/rx";
 import { FaUserLarge } from "react-icons/fa6";
 import { Stories } from "../constants";
-import StoryCard from "../components/StoryCard";
 import { useNavigate } from "react-router-dom";
 
 const DiscoverStories = () => {
@@ -29,51 +29,85 @@ const DiscoverStories = () => {
 
   const setStory = (storyData) => {
     localStorage?.setItem("story", JSON.stringify(storyData));
-    // checkStory(storyData);
     navigate("/talk");
+  };
+
+  const getCard = (index, content) => {
+    if (index === 2 || index === 4 || index === 10) {
+      return (
+        <StyledBox
+          onClick={() => {
+            localStorage.setItem("clickedContent", true);
+            setStory(content);
+          }}
+        >
+          <LayoutBox
+            justifyContent="space-between"
+            alignItems="center"
+            gap="10px"
+          >
+            <CardTitle style={{ position: "relative", top: "38px" }}>
+              {content?.title}
+            </CardTitle>
+            <StyledImage
+              src={content?.image}
+              alt={content?.title}
+              className="style-flexitem-image"
+            />
+          </LayoutBox>
+        </StyledBox>
+      );
+    } else {
+      return (
+        <StyledContainer
+          style={{ position: "relative" }}
+          onClick={() => {
+            localStorage.setItem("clickedContent", true);
+            setStory(content);
+          }}
+        >
+          <CardTitle
+            className="white-title"
+            style={{ position: "absolute", bottom: "0px", left: "10px" }}
+          >
+            {content?.title}
+          </CardTitle>
+          <StyledImage
+            src={content?.image}
+            alt={content?.title}
+            className={
+              index !== 3 && index !== 7 && index !== 11 && index !== 15
+                ? "small-image"
+                : "big-image"
+            }
+          />
+        </StyledContainer>
+      );
+    }
   };
 
   return (
     <ParentContainer>
       <DiscoverContainer>
-        <Container>
-          <LayoutBox justifyContent="space-between">
-            <NavButton onClick={() => navigate("/")}>
-              <RxCross2 size={18} />
-            </NavButton>
-            <NavButton>
-              <FaUserLarge size={18} />
-            </NavButton>
-          </LayoutBox>
-        </Container>
-
-        <Alignment padding="0 0.5rem 0">
+        <LayoutBox justifyContent="space-between">
+          <NavButton onClick={() => navigate("/")}>
+            <RxCross2 size={18} />
+          </NavButton>
+          <NavButton>
+            <FaUserLarge size={18} />
+          </NavButton>
+        </LayoutBox>
+        <Alignment margin="20px 16px">
           {<StyledTitle>{greet()}</StyledTitle>}
         </Alignment>
 
-        <GridContainer>
+        <div className="grid-container">
           {Object?.entries(Stories)?.map(([_, data]) => {
             return data?.map((content, index) => {
-              return (
-                <GridItem className={`grid-item-${index}`}>
-                  <StoryCard
-                    content={content}
-                    page="discover"
-                    type={index === 2 || index === 4 ? "two" : "one"}
-                    imageType={index === 3 || index === 7 ? "big" : null}
-                    onClick={() => {
-                      setStory(content);
-                      localStorage.setItem(
-                        "clickedContent",
-                        JSON.stringify(true)
-                      );
-                    }}
-                  />
-                </GridItem>
-              );
+              return <div>{getCard(index, content)}</div>;
             });
           })}
-        </GridContainer>
+        </div>
       </DiscoverContainer>
     </ParentContainer>
   );
