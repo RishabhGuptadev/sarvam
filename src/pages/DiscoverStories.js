@@ -90,7 +90,7 @@ const DiscoverStories = () => {
     <ParentContainer>
       <DiscoverContainer>
         <LayoutBox justifyContent="space-between">
-          <NavButton onClick={() => navigate("/")}>
+          <NavButton>
             <RxCross2 size={18} />
           </NavButton>
           <NavButton>

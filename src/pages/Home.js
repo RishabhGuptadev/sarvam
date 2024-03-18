@@ -20,13 +20,6 @@ import Talk from "./Talk";
 import DiscoverStories from "./DiscoverStories";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [speech, setSpeech] = useState("hi");
-  const [story, setStory] = useState(null);
-  const setQuestion = (question) => {
-    setSpeech(question);
-  };
-
   return (
     <Wrapper>
       <HomeContainer>
