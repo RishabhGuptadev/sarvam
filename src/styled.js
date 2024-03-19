@@ -284,7 +284,7 @@ export const ScrollContainer = styled.div`
   }
   &.right {
     overflow-y: scroll;
-    width: 60%;
+    flex: 2;
   }
 `;
 
