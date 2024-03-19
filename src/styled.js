@@ -19,10 +19,13 @@ export const DiscoverContainer = styled.div`
   position: relative;
   top: 0px;
   height: 100vh;
-  @media only screen and (max-width: 900px) {
+  @media only screen and (max-width: 762px) {
     border-radius: 24px;
     top: 16px;
     width: 100vw;
+  }
+  @media only screen and (min-width: 762px) and (max-width: 1000px) {
+    padding: 0px 16px;
   }
 `;
 
@@ -248,7 +251,7 @@ export const SidebarTitle = styled.p`
 `;
 
 export const SidebarContainer = styled.div`
-  display: inline-block;
+  display: block;
   padding: 12px;
   border-right: 1px solid rgb(237 225 209);
   @media only screen and (max-width: 1000px) {
@@ -263,6 +266,7 @@ export const SecondCard = styled.div`
 `;
 
 export const MobileContainer = styled.div`
+  display: block;
   @media only screen and (min-width: 768px) {
     display: none;
   }
@@ -278,6 +282,7 @@ export const TalkContainer = styled.div`
 `;
 
 export const ScrollContainer = styled.div`
+  display: block;
   height: 100vh;
   &.left {
     overflow-y: scroll;
@@ -285,6 +290,25 @@ export const ScrollContainer = styled.div`
   &.right {
     overflow-y: scroll;
     flex: 2;
+  }
+
+  @media only screen and (max-width: 762px) {
+    &.right {
+      overflow-y: scroll;
+      flex-grow: 0;
+    }
+  }
+
+  @media only screen and (min-width: 762px) and (max-width: 1000px) {
+    &.left {
+      overflow-y: scroll;
+      flex-grow: 2;
+    }
+
+    &.right {
+      overflow-y: scroll;
+      display: none;
+    }
   }
 `;
 
